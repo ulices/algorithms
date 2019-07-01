@@ -20,25 +20,25 @@ class BinaryTree
   end
 
   def pre_order
-    node_values = visit_pre_order(@head, [])
+    node_values = pre_order_traversal(@head, [])
     node_values.join(' ')
   end
 
   def in_order
-    node_values = visit_in_order(@head, [])
+    node_values = in_order_traversal(@head, [])
     node_values.join(' ')
   end
 
   alias_method :sort_values, :in_order
 
   def post_order
-    node_values = visit_post_order(@head, [])
+    node_values = post_order_traversal(@head, [])
     node_values.join(' ')
   end
 
   def nodes_values
     # node_values = search_nodes(@head, [])
-    node_values = visit_pre_order(@head, [])
+    node_values = pre_order_traversal(@head, [])
     node_values.join(' ')
   end
 
@@ -117,24 +117,24 @@ private
     node_values
   end
 
-  def visit_pre_order(current, node_values)
+  def pre_order_traversal(current, node_values)
     return node_values unless current
     node_values << current.value
-    visit_pre_order(current.left, node_values)
-    visit_pre_order(current.right, node_values)
+    pre_order_traversal(current.left, node_values)
+    pre_order_traversal(current.right, node_values)
   end
 
-  def visit_in_order(current, node_values)
+  def in_order_traversal(current, node_values)
     return node_values unless current
-    visit_in_order(current.left, node_values)
+    in_order_traversal(current.left, node_values)
     node_values << current.value
-    visit_in_order(current.right, node_values)
+    in_order_traversal(current.right, node_values)
   end
 
-  def visit_post_order(current, node_values)
+  def post_order_traversal(current, node_values)
     return node_values unless current
-    visit_post_order(current.left, node_values)
-    visit_post_order(current.right, node_values)
+    post_order_traversal(current.left, node_values)
+    post_order_traversal(current.right, node_values)
     node_values << current.value
   end
 end
