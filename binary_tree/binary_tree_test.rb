@@ -171,4 +171,16 @@ describe BinaryTree do
       end
     end
   end
+
+  it 'Sort letters' do
+    populate_tree(['c', 't', 'e', 'l', 'n'])
+
+    @binary_tree.in_order.must_equal('c e l n t')
+  end
+
+  it 'Sort words' do
+    populate_tree(['queue', 'stack', 'code', 'algorithms'])
+
+    @binary_tree.in_order.must_equal('algorithms code queue stack')
+  end
 end
