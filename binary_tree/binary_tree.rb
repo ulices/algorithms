@@ -36,6 +36,12 @@ class BinaryTree
     node_values.join(' ')
   end
 
+  def not_recursive_in_order
+    return 'empty' unless @head
+    node_values = not_recursive_in_order_traversal(@head)
+    node_values.join(' ')
+  end
+
   def nodes_values
     # node_values = search_nodes(@head, [])
     node_values = pre_order_traversal(@head, [])
@@ -136,5 +142,30 @@ private
     post_order_traversal(current.left, node_values)
     post_order_traversal(current.right, node_values)
     node_values << current.value
+  end
+
+  def not_recursive_in_order_traversal(current)
+    stack = [current]
+    node_values = []
+    go_left = true
+    while stack.size > 0
+      if go_left
+          while current.left
+            stack.push(current)
+            current = current.left
+          end
+        end
+
+        node_values.push current.value
+
+        if current.right
+          current = current.right
+          go_left = true
+        else
+          current = stack.pop
+          go_left = false
+        end
+    end
+    node_values
   end
 end

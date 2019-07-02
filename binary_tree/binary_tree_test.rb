@@ -162,5 +162,13 @@ describe BinaryTree do
         @binary_tree.post_order.must_equal('1 3 2 5 7 6 4')
       end
     end
+
+    describe "Not recursive" do
+      describe "In-Order" do
+        it "must in-ordered the nodes" do
+          @binary_tree.not_recursive_in_order.must_equal('1 2 3 4 5 6 7')
+        end
+      end
+    end
   end
 end
