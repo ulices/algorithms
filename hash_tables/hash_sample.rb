@@ -1,0 +1,3 @@
+class HashSample
+
+end
